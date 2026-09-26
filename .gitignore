@@ -1,0 +1,7 @@
+# Секреты и локальные файлы — в репозиторий не попадают.
+.env
+*.key
+config.yaml
+config.local.yaml
+node_modules/
+.DS_Store

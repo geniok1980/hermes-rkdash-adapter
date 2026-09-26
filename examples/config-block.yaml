@@ -1,0 +1,7 @@
+# Блок, который установщик добавляет в config.yaml профиля агента.
+mcp_servers:
+  rkdash:
+    url: https://rkdash.com/api/mcp
+    headers:
+      Authorization: 'Bearer rk_live_…'
+    description: Инструменты RKDash — данные ресторана, доска задач, события.

@@ -1,0 +1,28 @@
+{
+  "name": "hermes-rkdash-adapter",
+  "version": "1.0.0",
+  "description": "RKDash adapter for Hermes Agent — connects an agent on its own server to the RKDash restaurant analytics platform",
+  "license": "MIT",
+  "author": "geniok",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geniok1980/hermes-rkdash-adapter"
+  },
+  "homepage": "https://rkdash.com",
+  "keywords": [
+    "rkdash",
+    "hermes",
+    "hermes-agent",
+    "adapter",
+    "mcp",
+    "restaurant",
+    "analytics"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "install-agent": "sh install.sh",
+    "verify": "sh verify.sh"
+  }
+}
