@@ -127,8 +127,24 @@ fi
 
 echo
 echo "Готово. Перезапустите Hermes: навык и инструменты подхватываются при старте."
-echo "Проверка:  hermes $PROFILE_ARG mcp test rkdash"
 echo "Дальше в панели RKDash:"
 echo "  1) Настройки → API — включить MCP-сервер;"
 echo "  2) Цифровые сотрудники → Подключить агента → «Внешний агент по API server»:"
 echo "     адрес этого сервера и ключ из API_SERVER_KEY."
+
+# Проверка идёт сразу за установкой — одно действие вместо двух команд.
+# До перезапуска Hermes часть проверок (инструменты MCP) ещё не видна: это нормально.
+if [ "${RKDASH_SKIP_VERIFY:-}" = "1" ]; then
+  echo
+  echo "Проверка пропущена: RKDASH_SKIP_VERIFY=1"
+else
+  echo
+  echo "Проверка установки (инструменты MCP станут видны после перезапуска Hermes):"
+  verify_tmp="$(mktemp "${TMPDIR:-/tmp}/rkdash-verify.XXXXXX")"
+  if curl -fsSL "$RAW_BASE/verify.sh" -o "$verify_tmp" 2>/dev/null; then
+    sh "$verify_tmp" || true
+  else
+    echo "  скачать проверку не удалось — запустите вручную: sh verify.sh"
+  fi
+  rm -f "$verify_tmp"
+fi
